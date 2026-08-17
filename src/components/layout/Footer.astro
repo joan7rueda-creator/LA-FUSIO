@@ -1,6 +1,7 @@
 ---
 import { SITE } from '@/data/site';
 import Icon from '@/components/ui/Icon.astro';
+import { withBase } from '@/lib/url';
 
 const year = new Date().getFullYear();
 
@@ -12,9 +13,9 @@ const nav = [
 ];
 
 const legal = [
-  { href: '/privacidad/', label: 'Política de privacidad' },
-  { href: '/cookies/', label: 'Cookies' },
-  { href: '/aviso-legal/', label: 'Aviso legal' },
+  { href: withBase('privacidad/'), label: 'Política de privacidad' },
+  { href: withBase('cookies/'), label: 'Cookies' },
+  { href: withBase('aviso-legal/'), label: 'Aviso legal' },
 ];
 ---
 
