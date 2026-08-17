@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Fusion from '@/components/sections/Fusion.astro';
+import Cafe from '@/components/sections/Cafe.astro';
+import Flores from '@/components/sections/Flores.astro';
+import VisualImpact from '@/components/sections/VisualImpact.astro';
+import Experience from '@/components/sections/Experience.astro';
+import Products from '@/components/sections/Products.astro';
+import Instagram from '@/components/sections/Instagram.astro';
+import CTA from '@/components/sections/CTA.astro';
+import Contact from '@/components/sections/Contact.astro';
+---
+
+<BaseLayout
+  title="LAFUSIO — Café, flores y momentos."
+  description="LAFUSIO es un espacio que fusiona café de especialidad y floristería. Un lugar para disfrutar de un buen café, descubrir flores y quedarte un poco más."
+>
+  <Header />
+  <main id="main">
+    <Hero />
+    <Fusion />
+    <Cafe />
+    <Flores />
+    <VisualImpact />
+    <Experience />
+    <Products />
+    <Instagram />
+    <CTA />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

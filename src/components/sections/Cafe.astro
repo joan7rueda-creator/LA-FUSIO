@@ -1,0 +1,62 @@
+---
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+
+const items = [
+  { n: '01', name: 'Espresso', desc: 'Intenso y directo, la base de todo.' },
+  { n: '02', name: 'Cappuccino', desc: 'Cremoso, equilibrado, de siempre.' },
+  { n: '03', name: 'Latte', desc: 'Suave y cercano, para tomarse con calma.' },
+  { n: '04', name: 'Café filtrado', desc: 'Claridad y matices, gota a gota.' },
+  { n: '05', name: 'Pastelería', desc: 'El acompañamiento perfecto para cada café.' },
+];
+---
+
+<section id="cafe" class="relative overflow-hidden bg-ink-800 py-24 text-sand-50 sm:py-32 lg:py-36">
+  <div class="mx-auto max-w-[90rem] px-5 lg:px-10">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-28">
+          <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-300">
+            Café de especialidad
+          </p>
+          <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 max-w-sm font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl">
+            El café es solo el principio.
+          </h2>
+
+          <div data-reveal="scale" data-reveal-delay="220" class="mt-10 overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/40">
+            <ImagePlaceholder
+              tone="ink"
+              icon="coffee"
+              label="Fotografía — preparación de café de especialidad"
+              class="relative aspect-[3/4] w-full"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 lg:pt-24">
+        <ul class="divide-y divide-sand-50/12 border-t border-sand-50/12">
+          {items.map((item, i) => (
+            <li
+              data-reveal
+              data-reveal-delay={String(i * 90)}
+              class="group flex items-center justify-between gap-6 py-7 transition-colors duration-300 sm:py-8"
+            >
+              <div class="flex items-baseline gap-5 sm:gap-8">
+                <span class="text-xs font-medium text-sand-50/40">{item.n}</span>
+                <h3 class="font-display text-2xl italic text-sand-50 transition-transform duration-300 ease-out group-hover:translate-x-1.5 sm:text-3xl">
+                  {item.name}
+                </h3>
+              </div>
+              <p class="hidden max-w-[14rem] text-right text-sm leading-relaxed text-sand-50/55 sm:block">
+                {item.desc}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-8 text-xs uppercase tracking-[0.14em] text-sand-50/35">
+          Carta sujeta a variaciones de temporada.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

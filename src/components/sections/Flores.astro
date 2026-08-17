@@ -1,0 +1,41 @@
+---
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+
+const tiles = [
+  { label: 'Ramo — selección de temporada', tone: 'olive' as const, icon: 'flower' as const, cls: 'sm:col-span-5 sm:row-span-2 aspect-[3/4] sm:aspect-auto', mt: '' },
+  { label: 'Flor individual — detalle', tone: 'bloom' as const, icon: 'flower' as const, cls: 'sm:col-span-3 aspect-square', mt: '' },
+  { label: 'Composición floral', tone: 'sand' as const, icon: 'leaf' as const, cls: 'sm:col-span-4 aspect-[4/5]', mt: '' },
+  { label: 'Detalle botánico', tone: 'ink' as const, icon: 'leaf' as const, cls: 'sm:col-span-3 aspect-square', mt: 'sm:mt-10' },
+  { label: 'Composición floral — barra', tone: 'olive' as const, icon: 'flower' as const, cls: 'sm:col-span-4 aspect-[4/5]', mt: 'sm:mt-10' },
+];
+---
+
+<section id="flores" class="relative overflow-hidden bg-sand-50 py-24 sm:py-32 lg:py-40">
+  <div class="mx-auto max-w-[90rem] px-5 lg:px-10">
+    <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+      <div class="max-w-xl">
+        <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
+          Floristería
+        </p>
+        <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
+          Flores para cada momento.
+        </h2>
+      </div>
+      <p data-reveal data-reveal-delay="200" class="max-w-sm text-base leading-relaxed text-ink-700/70 lg:text-right">
+        Selecciones florales pensadas para regalar, decorar o simplemente llevar un poco de naturaleza contigo.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-12 sm:gap-5 lg:mt-20">
+      {tiles.map((tile, i) => (
+        <div
+          data-reveal="mask"
+          data-reveal-delay={String(i * 110)}
+          class={`overflow-hidden rounded-[1.5rem] ${tile.cls} ${tile.mt}`}
+        >
+          <ImagePlaceholder tone={tile.tone} icon={tile.icon} label={tile.label} class="relative h-full w-full transition-transform duration-700 ease-out hover:scale-[1.04]" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

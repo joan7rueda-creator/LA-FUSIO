@@ -1,0 +1,94 @@
+---
+import { SITE } from '@/data/site';
+import Icon from '@/components/ui/Icon.astro';
+
+const year = new Date().getFullYear();
+
+const nav = [
+  { href: '#fusion', label: 'La Fusión' },
+  { href: '#cafe', label: 'Café' },
+  { href: '#flores', label: 'Flores' },
+  { href: '#productos', label: 'Productos' },
+];
+
+const legal = [
+  { href: '/privacidad/', label: 'Política de privacidad' },
+  { href: '/cookies/', label: 'Cookies' },
+  { href: '/aviso-legal/', label: 'Aviso legal' },
+];
+---
+
+<footer class="border-t border-sand-50/10 bg-ink-800 text-sand-100">
+  <div class="mx-auto grid max-w-[90rem] gap-12 px-5 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:px-10 lg:py-20">
+    <div class="sm:col-span-2 lg:col-span-2">
+      <a href="#top" class="font-display text-2xl font-semibold tracking-[0.02em] text-sand-50">
+        LA<span class="text-olive-400">FUSIO</span>
+      </a>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-sand-100/65">
+        Un espacio donde el café y las flores se encuentran. Ven a disfrutar, descubrir y quedarte un poco más.
+      </p>
+      <a
+        href={SITE.social.instagram}
+        target="_blank"
+        rel="noopener noreferrer me"
+        class="mt-6 inline-flex items-center gap-2 rounded-full border border-sand-50/15 px-4 py-2 text-sm font-medium transition-colors hover:border-olive-400 hover:text-olive-300"
+      >
+        <Icon name="instagram" class="h-4 w-4" />
+        {SITE.social.instagramHandle}
+      </a>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">Navegación</h2>
+      <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
+        {nav.map((item) => (
+          <li><a href={item.href} class="transition-colors duration-200 hover:text-olive-300">{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">Contacto</h2>
+      <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
+        <li>{SITE.address.display}</li>
+        <li>{SITE.contact.phoneDisplay}</li>
+        <li>
+          <a href={`mailto:${SITE.contact.email}`} class="break-all transition-colors duration-200 hover:text-olive-300">
+            {SITE.contact.email}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">Horario</h2>
+      <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
+        {SITE.hours.map((h) => (
+          <li class="flex justify-between gap-4">
+            <span>{h.day}</span>
+            <span class="text-sand-100/45">Consultar</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-sand-50/10">
+    <div class="mx-auto flex max-w-[90rem] flex-col items-center gap-6 px-5 py-10 text-center lg:px-10">
+      <p class="font-display text-2xl font-medium tracking-tight text-sand-50 sm:text-3xl">
+        Café, flores y momentos.
+      </p>
+    </div>
+  </div>
+
+  <div class="border-t border-sand-50/10">
+    <div class="mx-auto flex max-w-[90rem] flex-col gap-3 px-5 py-6 text-xs text-sand-100/45 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+      <p>&copy; {year} {SITE.name}. Todos los derechos reservados.</p>
+      <ul class="flex flex-wrap gap-x-5 gap-y-1">
+        {legal.map((item) => (
+          <li><a href={item.href} class="transition-colors duration-200 hover:text-sand-100">{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>

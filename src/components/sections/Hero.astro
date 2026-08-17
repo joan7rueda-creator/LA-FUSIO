@@ -1,0 +1,104 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+
+const chips = [
+  { icon: 'coffee' as const, label: 'Café de especialidad' },
+  { icon: 'flower' as const, label: 'Flores seleccionadas' },
+  { icon: 'sparkle' as const, label: 'Un espacio para disfrutar' },
+];
+---
+
+<section id="top" class="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink-900 text-sand-50" data-parallax-scope>
+  <div class="absolute inset-0" data-reveal="mask" data-reveal-delay="0">
+    <ImagePlaceholder
+      tone="olive"
+      icon="coffee"
+      label="Fotografía hero — interior de LAFUSIO: mesa con café, flores y luz natural"
+      hideLabel
+      class="relative h-full w-full scale-[1.12]"
+      data-parallax
+      data-parallax-speed="0.08"
+      data-parallax-zoom="true"
+    />
+  </div>
+
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/45 to-ink-900/10"></div>
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-900/60 via-transparent to-ink-900/30"></div>
+
+  <!-- Chip flotante: café de especialidad -->
+  <div
+    data-reveal="bud"
+    data-reveal-delay="700"
+    class="pointer-events-none absolute right-6 top-28 z-10 hidden items-center gap-2 rounded-full border border-sand-50/20 bg-ink-900/30 px-4 py-2 text-xs font-medium uppercase tracking-[0.1em] backdrop-blur-sm sm:flex lg:right-12"
+  >
+    <Icon name={chips[0].icon} class="h-3.5 w-3.5" />
+    {chips[0].label}
+  </div>
+
+  <!-- Chip flotante: flores seleccionadas -->
+  <div
+    data-reveal="bud"
+    data-reveal-delay="900"
+    class="pointer-events-none absolute right-6 top-44 z-10 hidden items-center gap-2 rounded-full border border-sand-50/20 bg-ink-900/30 px-4 py-2 text-xs font-medium uppercase tracking-[0.1em] backdrop-blur-sm sm:flex lg:right-12"
+  >
+    <Icon name={chips[1].icon} class="h-3.5 w-3.5" />
+    {chips[1].label}
+  </div>
+
+  <div class="relative z-10 mx-auto flex h-full max-w-[90rem] flex-col justify-end px-5 pb-16 pt-28 sm:pb-20 lg:px-10 lg:pb-24">
+    <p
+      data-reveal
+      data-reveal-delay="0"
+      class="text-xs font-semibold uppercase tracking-[0.32em] text-sand-50/70"
+    >
+      Café &amp; Floristería
+    </p>
+
+    <h1
+      data-reveal="lg"
+      data-reveal-delay="120"
+      class="mt-5 max-w-4xl font-display text-[13vw] font-medium leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl"
+    >
+      Café, flores y momentos.
+    </h1>
+
+    <p
+      data-reveal
+      data-reveal-delay="360"
+      class="mt-7 max-w-md text-base leading-relaxed text-sand-50/80 sm:text-lg"
+    >
+      Un lugar donde disfrutar de un buen café, descubrir flores y quedarte un poco más.
+    </p>
+
+    <div data-reveal data-reveal-delay="520" class="mt-10 flex flex-wrap gap-4">
+      <Button href="#fusion" variant="primary" class="!bg-sand-50 !text-ink-800 hover:!bg-olive-500 hover:!text-sand-50">
+        Descubre LAFUSIO
+        <Icon name="arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+      </Button>
+      <Button href="#visitanos" variant="ghost" class="!border-sand-50/30 !text-sand-50 hover:!border-sand-50 hover:!bg-sand-50/10">
+        Visítanos
+      </Button>
+    </div>
+
+    <div data-reveal data-reveal-delay="680" class="mt-10 flex flex-wrap gap-x-8 gap-y-3 sm:hidden">
+      {chips.map((chip) => (
+        <span class="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-sand-50/70">
+          <Icon name={chip.icon} class="h-3.5 w-3.5" />
+          {chip.label}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <div
+    data-reveal
+    data-reveal-delay="1000"
+    class="animate-drift pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-sand-50/60 sm:flex"
+    style="animation-duration: 6s;"
+  >
+    <span class="text-[0.65rem] font-medium uppercase tracking-[0.2em]">Descubre más</span>
+    <span class="h-8 w-px bg-sand-50/40"></span>
+  </div>
+</section>

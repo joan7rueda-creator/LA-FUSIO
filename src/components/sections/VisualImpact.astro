@@ -1,0 +1,31 @@
+---
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+---
+
+<section class="relative isolate h-[85vh] min-h-[520px] w-full overflow-hidden bg-ink-900" data-parallax-scope>
+  <ImagePlaceholder
+    tone="ink"
+    icon="leaf"
+    label="Fotografía panorámica — mesa con café y flores, luz natural, interior LAFUSIO"
+    hideLabel
+    class="absolute inset-0 h-full w-full scale-110"
+    data-parallax
+    data-parallax-speed="0.12"
+    data-parallax-zoom="true"
+  />
+
+  <div class="pointer-events-none absolute inset-0 bg-ink-900/45"></div>
+
+  <div class="relative z-10 flex h-full flex-col items-center justify-center px-5 text-center">
+    <p data-reveal class="text-xs font-semibold uppercase tracking-[0.32em] text-sand-50/70">
+      LAFUSIO
+    </p>
+    <h2
+      data-reveal="lg"
+      data-reveal-delay="100"
+      class="mt-6 font-display text-5xl font-medium tracking-tight text-sand-50 sm:text-7xl lg:text-8xl"
+    >
+      Café. Flores. Vida.
+    </h2>
+  </div>
+</section>

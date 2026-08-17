@@ -1,0 +1,94 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+---
+
+<section id="fusion" class="relative overflow-hidden bg-sand-100 py-24 sm:py-32 lg:py-40">
+  <div
+    class="animate-drift pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-olive-200/50 blur-3xl"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-[90rem] px-5 lg:px-10">
+    <div class="max-w-2xl">
+      <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
+        La fusión
+      </p>
+      <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
+        Dos mundos.<br />Un mismo lugar.
+      </h2>
+      <p data-reveal data-reveal-delay="200" class="mt-7 max-w-lg text-base leading-relaxed text-ink-700/75 sm:text-lg">
+        LAFUSIO nace de la unión entre el café y las flores. Un espacio pensado para disfrutar,
+        desconectar y descubrir algo diferente en cada visita.
+      </p>
+    </div>
+
+    <!-- Composición asimétrica: los dos conceptos se solapan visualmente en lugar de
+         vivir en tarjetas idénticas y separadas. -->
+    <div class="relative mt-20 sm:mt-24 lg:mt-28">
+      <div class="grid grid-cols-1 lg:grid-cols-12">
+        <div
+          data-reveal="scale"
+          class="relative z-10 lg:col-span-7 lg:col-start-1"
+        >
+          <div class="overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/15">
+            <ImagePlaceholder
+              tone="ink"
+              icon="coffee"
+              label="Café — mesa de trabajo, grano y espresso"
+              class="relative aspect-[4/3] w-full"
+            />
+          </div>
+          <div class="mt-6 flex items-start gap-4 pr-4">
+            <span class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink-800 text-sand-50">
+              <Icon name="coffee" class="h-4.5 w-4.5" />
+            </span>
+            <div>
+              <h3 class="font-display text-2xl font-medium text-ink-800">Café</h3>
+              <p class="mt-1.5 max-w-xs text-sm leading-relaxed text-ink-700/70">
+                El aroma, el sabor y el momento de disfrutar de un buen café.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          data-reveal="scale"
+          data-reveal-delay="220"
+          class="relative z-20 mt-10 lg:col-span-7 lg:col-start-6 lg:mt-28"
+        >
+          <div class="overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/15">
+            <ImagePlaceholder
+              tone="olive"
+              icon="flower"
+              label="Flores — composición floral sobre la barra"
+              class="relative aspect-[4/3] w-full"
+            />
+          </div>
+          <div class="mt-6 flex items-start gap-4 pl-0 sm:pl-4">
+            <span class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-olive-700 text-sand-50">
+              <Icon name="flower" class="h-4.5 w-4.5" />
+            </span>
+            <div>
+              <h3 class="font-display text-2xl font-medium text-ink-800">Flores</h3>
+              <p class="mt-1.5 max-w-xs text-sm leading-relaxed text-ink-700/70">
+                Color, naturaleza y composiciones que puedes llevar contigo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insignia de fusión: se sitúa en el punto de solape de ambas composiciones. -->
+        <div
+          data-reveal="bud"
+          data-reveal-delay="420"
+          class="pointer-events-none absolute left-1/2 top-[38%] z-30 hidden -translate-x-1/2 -translate-y-1/2 lg:block"
+        >
+          <span class="flex h-20 w-20 items-center justify-center rounded-full border border-sand-50/50 bg-sand-50/90 shadow-xl shadow-ink-900/20 backdrop-blur">
+            <span class="font-display text-2xl italic text-olive-700">+</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

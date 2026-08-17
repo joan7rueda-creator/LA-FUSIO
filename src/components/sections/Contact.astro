@@ -1,0 +1,81 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { SITE } from '@/data/site';
+
+const info = [
+  { icon: 'pin' as const, label: 'Dirección', value: SITE.address.display },
+  { icon: 'phone' as const, label: 'Teléfono', value: SITE.contact.phoneDisplay },
+  { icon: 'mail' as const, label: 'Email', value: SITE.contact.email },
+  { icon: 'instagram' as const, label: 'Instagram', value: SITE.social.instagramHandle },
+];
+---
+
+<section id="visitanos" class="relative overflow-hidden bg-sand-50 py-24 sm:py-32 lg:py-36">
+  <div class="mx-auto max-w-[90rem] px-5 lg:px-10">
+    <div class="max-w-xl">
+      <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
+        Visítanos
+      </p>
+      <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
+        Ven a vernos.
+      </h2>
+    </div>
+
+    <div id="contacto" class="mt-16 grid gap-10 lg:grid-cols-12 lg:gap-8 lg:mt-20">
+      <div data-reveal data-reveal-delay="140" class="lg:col-span-5">
+        <dl class="divide-y divide-ink-800/10 border-t border-ink-800/10">
+          {info.map((item) => (
+            <div class="flex items-center gap-4 py-5">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-olive-50 text-olive-700">
+                <Icon name={item.icon} class="h-4.5 w-4.5" />
+              </span>
+              <div>
+                <dt class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-700/50">{item.label}</dt>
+                <dd class="mt-0.5 text-base text-ink-800">{item.value}</dd>
+              </div>
+            </div>
+          ))}
+          <div class="flex items-start gap-4 py-5">
+            <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-olive-50 text-olive-700">
+              <Icon name="clock" class="h-4.5 w-4.5" />
+            </span>
+            <div class="flex-1">
+              <dt class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-700/50">Horarios</dt>
+              <dd class="mt-1.5 space-y-1">
+                {SITE.hours.map((h) => (
+                  <div class="flex justify-between gap-6 text-sm text-ink-800/85">
+                    <span>{h.day}</span>
+                    <span class="text-ink-700/45">Consultar</span>
+                  </div>
+                ))}
+              </dd>
+            </div>
+          </div>
+        </dl>
+
+        <Button href={SITE.maps.directionsUrl || '#'} variant="primary" class="mt-8">
+          Cómo llegar
+          <Icon name="arrow-up-right" class="h-4 w-4" />
+        </Button>
+      </div>
+
+      <!--
+        Placeholder de mapa. Cuando tengamos la ubicación real, sustituir este div
+        por un <iframe> apuntando a SITE.maps.embedUrl (ver src/data/site.ts), p.ej.:
+        <iframe src={SITE.maps.embedUrl} class="h-full w-full" loading="lazy" ...></iframe>
+      -->
+      <div data-reveal="scale" data-reveal-delay="240" class="lg:col-span-7">
+        <div class="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[1.75rem] bg-olive-100 sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[26rem]">
+          <div class="absolute inset-0 opacity-[0.15] [background-image:linear-gradient(currentColor_1px,transparent_1px),linear-gradient(90deg,currentColor_1px,transparent_1px)] [background-size:32px_32px] text-olive-700"></div>
+          <div class="relative z-10 flex flex-col items-center gap-3 px-6 text-center text-olive-800/70">
+            <Icon name="map" class="h-8 w-8" />
+            <p class="text-xs font-medium uppercase tracking-[0.14em]">
+              Mapa — se activará con Google Maps al confirmar la ubicación
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

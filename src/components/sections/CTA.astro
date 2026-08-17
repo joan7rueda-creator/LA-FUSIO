@@ -1,0 +1,42 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+import { SITE } from '@/data/site';
+---
+
+<section class="relative isolate overflow-hidden bg-ink-900 py-28 text-sand-50 sm:py-36" data-parallax-scope>
+  <ImagePlaceholder
+    tone="olive"
+    icon="flower"
+    label="Fotografía — fachada o rincón acogedor de LAFUSIO"
+    hideLabel
+    class="absolute inset-0 h-full w-full scale-110"
+    data-parallax
+    data-parallax-speed="0.06"
+    data-parallax-zoom="true"
+  />
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-900/80 via-ink-900/55 to-ink-900/85"></div>
+
+  <div class="relative mx-auto max-w-3xl px-5 text-center lg:px-10">
+    <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-sand-50/70">
+      Te esperamos
+    </p>
+    <h2 data-reveal="lg" data-reveal-delay="100" class="mt-6 font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+      Ven a descubrir LAFUSIO.
+    </h2>
+    <p data-reveal data-reveal-delay="240" class="mx-auto mt-6 max-w-md text-base leading-relaxed text-sand-50/75 sm:text-lg">
+      Un café, unas flores o simplemente un lugar donde parar un momento.
+    </p>
+
+    <div data-reveal data-reveal-delay="380" class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <Button href={SITE.maps.directionsUrl || '#visitanos'} variant="primary" class="!bg-sand-50 !text-ink-800 hover:!bg-olive-500 hover:!text-sand-50">
+        Cómo llegar
+        <Icon name="pin" class="h-4 w-4" />
+      </Button>
+      <Button href="#contacto" variant="ghost" class="!border-sand-50/30 !text-sand-50 hover:!border-sand-50 hover:!bg-sand-50/10">
+        Contacta con nosotros
+      </Button>
+    </div>
+  </div>
+</section>

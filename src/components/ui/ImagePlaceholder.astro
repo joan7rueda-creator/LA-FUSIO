@@ -1,0 +1,77 @@
+---
+// Placeholder visual reutilizable para todo el espacio fotográfico de la web.
+// Pensado para sustituirse 1:1 por <Image src={...} alt="..." /> (astro:assets)
+// sin tocar el layout de la sección: ocupa el mismo contenedor con aspect-ratio.
+import Icon from './Icon.astro';
+
+type Tone = 'olive' | 'sand' | 'ink' | 'bloom';
+
+interface Props {
+  label: string;
+  tone?: Tone;
+  icon?: 'coffee' | 'flower' | 'leaf' | 'gift' | 'sparkle';
+  class?: string;
+  labelClass?: string;
+  /** Oculta también la etiqueta "Foto pendiente" — para miniaturas decorativas. */
+  compact?: boolean;
+  /** Oculta solo el icono/texto central (mantiene la etiqueta de esquina) — para fondos
+   * grandes donde un titular real se superpone en el centro (Hero, CTA, rupturas visuales). */
+  hideLabel?: boolean;
+  [key: `data-${string}`]: string | boolean | undefined;
+}
+
+const {
+  label,
+  tone = 'olive',
+  icon = 'leaf',
+  class: className,
+  labelClass,
+  compact = false,
+  hideLabel = false,
+  ...rest
+} = Astro.props;
+
+const showCenterLabel = !compact && !hideLabel;
+const showCornerTag = !compact;
+
+const tones: Record<Tone, string> = {
+  olive: 'from-olive-700 via-olive-600 to-ink-700',
+  sand: 'from-sand-300 via-sand-400 to-ink-500',
+  ink: 'from-ink-700 via-ink-600 to-olive-800',
+  bloom: 'from-bloom-500 via-bloom-700 to-ink-700',
+};
+---
+
+<!--
+  Ojo: esta raíz NO fija `relative` por defecto. `class` (pasada por quien usa el
+  componente) debe incluir siempre "relative" o "absolute" explícitamente — con
+  Tailwind, dos utilidades de `position` en el mismo elemento compiten por orden
+  de hoja de estilos (no por orden en el HTML), así que un `relative` fijo aquí
+  podía ganarle a un `absolute` pasado desde fuera y romper el layout.
+-->
+<div class={`group/ph isolate flex items-center justify-center overflow-hidden bg-gradient-to-br ${tones[tone]} ${className ?? ''}`} {...rest}>
+  <div
+    class="animate-drift pointer-events-none absolute inset-0 opacity-50 mix-blend-overlay"
+    style="background:radial-gradient(circle at 25% 25%, white 0%, transparent 45%), radial-gradient(circle at 80% 70%, black 0%, transparent 50%);"
+  >
+  </div>
+  <div class="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:repeating-linear-gradient(45deg,currentColor_0,currentColor_1px,transparent_1px,transparent_10px)]"></div>
+
+  {showCenterLabel && (
+    <div class="relative z-10 flex flex-col items-center gap-3 px-6 text-center text-sand-50/90">
+      <Icon name={icon} class={compact ? 'h-5 w-5 opacity-70' : 'h-7 w-7 opacity-70'} />
+      <p class={`max-w-[16rem] text-[0.7rem] font-medium uppercase tracking-[0.14em] opacity-80 ${labelClass ?? ''}`}>
+        {label}
+      </p>
+    </div>
+  )}
+  {hideLabel && <span class="sr-only">{label}</span>}
+
+  {showCornerTag && (
+    <span
+      class="absolute bottom-3 right-3 z-10 rounded-full border border-sand-50/30 bg-ink-900/30 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-sand-50/80 backdrop-blur-sm"
+    >
+      Foto pendiente
+    </span>
+  )}
+</div>
