@@ -30,7 +30,7 @@ const legal = [
   <div class="mx-auto grid max-w-[90rem] gap-12 px-5 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:px-10 lg:py-20">
     <div class="sm:col-span-2 lg:col-span-2">
       <a href={home} class="font-display text-2xl font-semibold tracking-[0.02em] text-sand-50">
-        LA <span class="text-olive-400">FUSIÓ</span>
+        LA <span class="text-clay-400">FUSIÓ</span>
       </a>
       <p class="mt-4 max-w-xs text-sm leading-relaxed text-sand-100/65">
         {t('footer.tagline')}
@@ -39,7 +39,7 @@ const legal = [
         href={SITE.social.instagram}
         target="_blank"
         rel="noopener noreferrer me"
-        class="mt-6 inline-flex items-center gap-2 rounded-full border border-sand-50/15 px-4 py-2 text-sm font-medium transition-colors hover:border-olive-400 hover:text-olive-300"
+        class="mt-6 inline-flex items-center gap-2 rounded-full border border-sand-50/15 px-4 py-2 text-sm font-medium transition-colors hover:border-clay-400 hover:text-clay-300"
       >
         <Icon name="instagram" class="h-4 w-4" />
         {SITE.social.instagramHandle}
@@ -50,7 +50,7 @@ const legal = [
       <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">{t('footer.nav.title')}</h2>
       <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
         {nav.map((item) => (
-          <li><a href={item.href} class="transition-colors duration-200 hover:text-olive-300">{item.label}</a></li>
+          <li><a href={item.href} class="transition-colors duration-200 hover:text-clay-300">{item.label}</a></li>
         ))}
       </ul>
     </div>
@@ -61,7 +61,7 @@ const legal = [
         <li>{t('contact.placeholderAddress')}</li>
         <li>{t('contact.placeholderPhone')}</li>
         <li>
-          <a href={`mailto:${SITE.contact.email}`} class="break-all transition-colors duration-200 hover:text-olive-300">
+          <a href={`mailto:${SITE.contact.email}`} class="break-all transition-colors duration-200 hover:text-clay-300">
             {SITE.contact.email}
           </a>
         </li>

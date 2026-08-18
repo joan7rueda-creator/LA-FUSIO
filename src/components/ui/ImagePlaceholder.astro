@@ -5,7 +5,7 @@
 import Icon from './Icon.astro';
 import { useTranslations, type Lang } from '@/i18n/utils';
 
-type Tone = 'olive' | 'sand' | 'ink' | 'bloom';
+type Tone = 'clay' | 'sand' | 'ink' | 'bloom';
 
 interface Props {
   label: string;
@@ -25,7 +25,7 @@ interface Props {
 const {
   label,
   lang,
-  tone = 'olive',
+  tone = 'clay',
   icon = 'leaf',
   class: className,
   labelClass,
@@ -40,9 +40,9 @@ const showCenterLabel = !compact && !hideLabel;
 const showCornerTag = !compact;
 
 const tones: Record<Tone, string> = {
-  olive: 'from-olive-700 via-olive-600 to-ink-700',
+  clay: 'from-clay-700 via-clay-600 to-ink-700',
   sand: 'from-sand-300 via-sand-400 to-ink-500',
-  ink: 'from-ink-700 via-ink-600 to-olive-800',
+  ink: 'from-ink-700 via-ink-600 to-clay-800',
   bloom: 'from-bloom-500 via-bloom-700 to-ink-700',
 };
 ---

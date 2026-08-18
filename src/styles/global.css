@@ -1,14 +1,16 @@
 @import 'tailwindcss';
 
 /* Fuentes autoalojadas (sin peticiones externas a Google Fonts → mejor rendimiento y privacidad) */
-@import '@fontsource-variable/fraunces/standard.css';
-@import '@fontsource-variable/inter';
+@import '@fontsource-variable/ibarra-real-nova';
+@import '@fontsource-variable/ibarra-real-nova/wght-italic.css';
+@import '@fontsource-variable/work-sans';
 
 @theme {
   /* ---------------------------------------------------------------------
-     Paleta LAFUSIO — café + floristería.
-     "ink"  → marrón café oscuro, hace de negro tipográfico y fondo dark.
-     "olive"→ verde oliva/bosque, protagonista de la marca.
+     Paleta La Fusió — pastelería + floristería. Beige, crema y marrón
+     predominan; nada de verde en la interfaz.
+     "ink"  → marrón café oscuro/neutro, hace de negro tipográfico y fondo dark.
+     "clay" → marrón caramelo/tostado, acento de marca (enlaces, iconos, hover).
      "sand" → crema / beige cálido / blanco roto, base neutra editorial.
      "bloom"→ acento floral (terracota rosado), uso mínimo y deliberado.
      ------------------------------------------------------------------- */
@@ -23,16 +25,16 @@
   --color-ink-800: #251d12;
   --color-ink-900: #17120b;
 
-  --color-olive-50: #f2f4ec;
-  --color-olive-100: #e2e7d3;
-  --color-olive-200: #c6d0aa;
-  --color-olive-300: #a7b781;
-  --color-olive-400: #8a9d60;
-  --color-olive-500: #6d8146;
-  --color-olive-600: #556635;
-  --color-olive-700: #43512b;
-  --color-olive-800: #333e22;
-  --color-olive-900: #232a17;
+  --color-clay-50: #fbf0e1;
+  --color-clay-100: #f6ddb9;
+  --color-clay-200: #eebd80;
+  --color-clay-300: #e29c52;
+  --color-clay-400: #cf7f34;
+  --color-clay-500: #b3652a;
+  --color-clay-600: #935124;
+  --color-clay-700: #74401f;
+  --color-clay-800: #5a331a;
+  --color-clay-900: #402412;
 
   --color-sand-50: #fefdfb;
   --color-sand-100: #faf6ef;
@@ -50,8 +52,8 @@
   --color-bloom-500: #bf7a55;
   --color-bloom-700: #8f5537;
 
-  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Ibarra Real Nova Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Work Sans Variable', ui-sans-serif, system-ui, sans-serif;
 
   /*
     Sistema de movimiento — valores únicos reutilizados en toda la web para que
@@ -165,12 +167,12 @@
   }
 
   ::selection {
-    background-color: var(--color-olive-700);
+    background-color: var(--color-clay-700);
     color: var(--color-sand-50);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-olive-600);
+    outline: 2px solid var(--color-clay-600);
     outline-offset: 3px;
   }
 

@@ -10,11 +10,11 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const tiles = [
-  { label: t('flores.tile1'), tone: 'olive' as const, icon: 'flower' as const, cls: 'sm:col-span-5 sm:row-span-2 aspect-[3/4] sm:aspect-auto', mt: '' },
+  { label: t('flores.tile1'), tone: 'clay' as const, icon: 'flower' as const, cls: 'sm:col-span-5 sm:row-span-2 aspect-[3/4] sm:aspect-auto', mt: '' },
   { label: t('flores.tile2'), tone: 'bloom' as const, icon: 'flower' as const, cls: 'sm:col-span-3 aspect-square', mt: '' },
   { label: t('flores.tile3'), tone: 'sand' as const, icon: 'leaf' as const, cls: 'sm:col-span-4 aspect-[4/5]', mt: '' },
   { label: t('flores.tile4'), tone: 'ink' as const, icon: 'leaf' as const, cls: 'sm:col-span-3 aspect-square', mt: 'sm:mt-10' },
-  { label: t('flores.tile5'), tone: 'olive' as const, icon: 'flower' as const, cls: 'sm:col-span-4 aspect-[4/5]', mt: 'sm:mt-10' },
+  { label: t('flores.tile5'), tone: 'clay' as const, icon: 'flower' as const, cls: 'sm:col-span-4 aspect-[4/5]', mt: 'sm:mt-10' },
 ];
 ---
 
@@ -22,7 +22,7 @@ const tiles = [
   <div class="mx-auto max-w-[90rem] px-5 lg:px-10">
     <div class="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
       <div class="max-w-xl">
-        <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
+        <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-clay-700">
           {t('flores.eyebrow')}
         </p>
         <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
