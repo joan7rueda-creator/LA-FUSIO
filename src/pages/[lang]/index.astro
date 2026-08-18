@@ -12,24 +12,29 @@ import Products from '@/components/sections/Products.astro';
 import Instagram from '@/components/sections/Instagram.astro';
 import CTA from '@/components/sections/CTA.astro';
 import Contact from '@/components/sections/Contact.astro';
+import { useTranslations, type Lang } from '@/i18n/utils';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'ca' } }, { params: { lang: 'es' } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
 ---
 
-<BaseLayout
-  title="La Fusió — Pastelería, flores y momentos."
-  description="La Fusió es un espacio que fusiona pastelería artesanal y floristería. Un lugar para disfrutar de nuestra pastelería, tomar un café, descubrir flores y quedarte un poco más."
->
-  <Header />
+<BaseLayout lang={lang} path="/" title={t('site.title')} description={t('site.description')}>
+  <Header lang={lang} />
   <main id="main">
-    <Hero />
-    <Fusion />
-    <Pasteleria />
-    <Flores />
-    <VisualImpact />
-    <Experience />
-    <Products />
-    <Instagram />
-    <CTA />
-    <Contact />
+    <Hero lang={lang} />
+    <Fusion lang={lang} />
+    <Pasteleria lang={lang} />
+    <Flores lang={lang} />
+    <VisualImpact lang={lang} />
+    <Experience lang={lang} />
+    <Products lang={lang} />
+    <Instagram lang={lang} />
+    <CTA lang={lang} />
+    <Contact lang={lang} />
   </main>
-  <Footer />
+  <Footer lang={lang} />
 </BaseLayout>

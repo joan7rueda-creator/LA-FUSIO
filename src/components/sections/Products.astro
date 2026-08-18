@@ -1,14 +1,22 @@
 ---
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
 import Icon from '@/components/ui/Icon.astro';
+import { useTranslations, type Lang } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const products = [
-  { cat: 'Pastelería', name: 'Pastelería de temporada', tone: 'ink' as const, icon: 'cake' as const },
-  { cat: 'Flores', name: 'Ramo de temporada', tone: 'olive' as const, icon: 'flower' as const },
-  { cat: 'Café', name: 'Café de especialidad', tone: 'sand' as const, icon: 'coffee' as const },
-  { cat: 'Regalos', name: 'Detalle para regalar', tone: 'bloom' as const, icon: 'gift' as const },
-  { cat: 'Flores', name: 'Composición floral', tone: 'olive' as const, icon: 'leaf' as const },
-  { cat: 'Pastelería', name: 'Selección de bollería', tone: 'ink' as const, icon: 'cake' as const },
+  { cat: t('products.item1.cat'), name: t('products.item1.name'), tone: 'ink' as const, icon: 'cake' as const },
+  { cat: t('products.item2.cat'), name: t('products.item2.name'), tone: 'olive' as const, icon: 'flower' as const },
+  { cat: t('products.item3.cat'), name: t('products.item3.name'), tone: 'sand' as const, icon: 'coffee' as const },
+  { cat: t('products.item4.cat'), name: t('products.item4.name'), tone: 'bloom' as const, icon: 'gift' as const },
+  { cat: t('products.item5.cat'), name: t('products.item5.name'), tone: 'olive' as const, icon: 'leaf' as const },
+  { cat: t('products.item6.cat'), name: t('products.item6.name'), tone: 'ink' as const, icon: 'cake' as const },
 ];
 ---
 
@@ -17,14 +25,14 @@ const products = [
     <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
       <div class="max-w-xl">
         <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
-          Selección
+          {t('products.eyebrow')}
         </p>
         <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
-          Descubre La Fusió
+          {t('products.title')}
         </h2>
       </div>
       <p data-reveal data-reveal-delay="200" class="max-w-xs text-sm text-ink-700/60">
-        Una muestra de lo que encontrarás. Fotografías y nombres definitivos, próximamente.
+        {t('products.subtitle')}
       </p>
     </div>
   </div>
@@ -35,9 +43,10 @@ const products = [
         <div class="group snap-start w-[15.5rem] shrink-0 sm:w-[18rem]">
           <div class="overflow-hidden rounded-[1.25rem]">
             <ImagePlaceholder
+              lang={lang}
               tone={p.tone}
               icon={p.icon}
-              label={`${p.cat} — placeholder`}
+              label={`${p.cat} — ${t('products.imagePendingSuffix')}`}
               class="relative aspect-[4/5] w-full transition-transform duration-500 ease-out group-hover:scale-[1.06]"
             />
           </div>
@@ -54,6 +63,6 @@ const products = [
       ))}
       <div class="shrink-0 basis-1 sm:basis-4" aria-hidden="true"></div>
     </div>
-    <p class="mt-2 pl-5 text-xs text-ink-700/40 lg:pl-10">Desliza para ver más →</p>
+    <p class="mt-2 pl-5 text-xs text-ink-700/40 lg:pl-10">{t('products.footnote')}</p>
   </div>
 </section>

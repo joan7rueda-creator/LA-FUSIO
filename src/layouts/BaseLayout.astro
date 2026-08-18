@@ -1,17 +1,28 @@
 ---
 import '@/styles/global.css';
 import { SITE } from '@/data/site';
-import { withBase } from '@/lib/url';
+import { languages, useTranslations, withBase, type Lang } from '@/i18n/utils';
 
 interface Props {
   title: string;
   description: string;
+  lang: Lang;
+  /** Ruta sin prefijo de idioma, p.ej. "/" — se usa para construir hreflang. */
+  path: string;
   image?: string;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, lang, path, image } = Astro.props;
+const t = useTranslations(lang);
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL(image ?? 'og-image.jpg', Astro.site);
+const ogImageURL = new URL(image ?? withBase('og-image.jpg'), Astro.site);
+
+const alternates = Object.keys(languages) as Lang[];
+
+function alternateHref(altLang: Lang): string {
+  return withBase(`${altLang}${path}`);
+}
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -24,7 +35,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,12 +46,17 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
+    {alternates.map((altLang) => (
+      <link rel="alternate" hreflang={altLang} href={new URL(alternateHref(altLang), Astro.site)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(alternateHref('ca'), Astro.site)} />
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={lang === 'ca' ? 'ca_ES' : 'es_ES'} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="theme-color" content="#251d12" />
@@ -56,7 +72,7 @@ const jsonLd = {
       href="#main"
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-ink-800 focus:px-5 focus:py-3 focus:text-sand-50"
     >
-      Ir al contenido principal
+      {t('a11y.skipToContent')}
     </a>
     <slot />
     <script src="@/scripts/scroll-reveal.ts"></script>

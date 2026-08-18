@@ -1,21 +1,15 @@
-// Datos de contacto y negocio de La Fusió.
+// Datos de contacto y negocio de La Fusió (independientes del idioma).
 // TODO: sustituir cada placeholder por el dato real antes de publicar.
 // Editar aquí actualiza automáticamente footer, cabecera, contacto y SEO estructurado.
+// Los textos que sí varían según el idioma (p.ej. "Dirección por confirmar") viven en
+// src/i18n/ui.ts, no aquí.
 
 export const SITE = {
   name: 'La Fusió',
-  tagline: 'Pastelería, flores y momentos.',
-
-  address: {
-    // TODO: dirección real del local.
-    display: 'Dirección por confirmar',
-    city: '',
-  },
 
   contact: {
     // TODO: teléfono real.
     phone: '',
-    phoneDisplay: 'Teléfono por confirmar',
     // TODO: email real.
     email: 'hola@lafusio.com',
   },
@@ -26,11 +20,12 @@ export const SITE = {
     instagramHandle: '@lafusio',
   },
 
-  // TODO: horario real. Días sin franjas (`ranges`) se muestran como "Consultar".
+  // TODO: horario real. Días sin franjas (`ranges`) se muestran con la etiqueta "consultar".
+  // `dayKey` referencia una clave de traducción hours.* en src/i18n/ui.ts.
   hours: [
-    { day: 'Lunes – Viernes', ranges: [] as [string, string][] },
-    { day: 'Sábado', ranges: [] as [string, string][] },
-    { day: 'Domingo', ranges: [] as [string, string][] },
+    { dayKey: 'weekdays', ranges: [] as [string, string][] },
+    { dayKey: 'saturday', ranges: [] as [string, string][] },
+    { dayKey: 'sunday', ranges: [] as [string, string][] },
   ],
 
   // Placeholder de mapa: estructura lista para sustituir por un iframe de Google
@@ -40,3 +35,5 @@ export const SITE = {
     directionsUrl: '',
   },
 } as const;
+
+export type WeekDayKey = (typeof SITE.hours)[number]['dayKey'];

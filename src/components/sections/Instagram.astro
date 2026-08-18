@@ -3,6 +3,14 @@ import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
 import { SITE } from '@/data/site';
+import { useTranslations, type Lang } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const tiles = [
   { tone: 'ink' as const, icon: 'coffee' as const, cls: 'col-span-2 row-span-2 sm:col-span-3 sm:row-span-2' },
@@ -20,18 +28,18 @@ const tiles = [
     <div class="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
       <div>
         <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
-          Instagram
+          {t('instagram.eyebrow')}
         </p>
         <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
-          Síguenos en Instagram
+          {t('instagram.title')}
         </h2>
         <p data-reveal data-reveal-delay="200" class="mt-5 max-w-md text-base leading-relaxed text-ink-700/70">
-          Descubre nuestra pastelería, flores, novedades y el día a día de La Fusió.
+          {t('instagram.subtitle')}
         </p>
       </div>
       <div data-reveal data-reveal-delay="260">
         <Button href={SITE.social.instagram} variant="ghost" target="_blank" rel="noopener noreferrer">
-          Ver Instagram
+          {t('instagram.cta')}
           <Icon name="arrow-up-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Button>
       </div>
@@ -47,7 +55,7 @@ const tiles = [
           data-reveal-delay={String(i * 80)}
           class={`group relative overflow-hidden rounded-2xl ${tile.cls}`}
         >
-          <ImagePlaceholder tone={tile.tone} icon={tile.icon} label="Publicación de Instagram" compact class="relative h-full w-full transition-transform duration-500 ease-out group-hover:scale-110" />
+          <ImagePlaceholder lang={lang} tone={tile.tone} icon={tile.icon} label={t('instagram.tileLabel')} compact class="relative h-full w-full transition-transform duration-500 ease-out group-hover:scale-110" />
           <div class="absolute inset-0 flex items-center justify-center bg-ink-900/0 opacity-0 transition-all duration-300 ease-out group-hover:bg-ink-900/30 group-hover:opacity-100">
             <Icon name="instagram" class="h-6 w-6 scale-75 text-sand-50 opacity-0 transition-all duration-300 ease-out group-hover:scale-100 group-hover:opacity-100" />
           </div>

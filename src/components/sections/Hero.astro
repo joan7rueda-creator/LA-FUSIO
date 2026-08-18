@@ -2,20 +2,29 @@
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+import { useTranslations, type Lang } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const chips = [
-  { icon: 'cake' as const, label: 'Pastelería artesanal' },
-  { icon: 'flower' as const, label: 'Flores seleccionadas' },
-  { icon: 'sparkle' as const, label: 'Un espacio para disfrutar' },
+  { icon: 'cake' as const, label: t('hero.chip.pasteleria') },
+  { icon: 'flower' as const, label: t('hero.chip.flores') },
+  { icon: 'sparkle' as const, label: t('hero.chip.espacio') },
 ];
 ---
 
 <section id="top" class="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink-900 text-sand-50" data-parallax-scope>
   <div class="absolute inset-0" data-reveal="mask" data-reveal-delay="0">
     <ImagePlaceholder
+      lang={lang}
       tone="olive"
       icon="cake"
-      label="Fotografía hero — interior de La Fusió: pastelería, flores y luz natural"
+      label={t('hero.imageLabel')}
       hideLabel
       class="relative h-full w-full scale-[1.12]"
       data-parallax
@@ -53,7 +62,7 @@ const chips = [
       data-reveal-delay="0"
       class="text-xs font-semibold uppercase tracking-[0.32em] text-sand-50/70"
     >
-      Pastelería &amp; Floristería
+      {t('hero.eyebrow')}
     </p>
 
     <h1
@@ -61,7 +70,7 @@ const chips = [
       data-reveal-delay="120"
       class="mt-5 max-w-4xl font-display text-[13vw] font-medium leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl"
     >
-      Pastelería, flores y momentos.
+      {t('hero.title')}
     </h1>
 
     <p
@@ -69,16 +78,16 @@ const chips = [
       data-reveal-delay="360"
       class="mt-7 max-w-md text-base leading-relaxed text-sand-50/80 sm:text-lg"
     >
-      Un lugar donde disfrutar de nuestra pastelería, tomar un café y descubrir flores.
+      {t('hero.subtitle')}
     </p>
 
     <div data-reveal data-reveal-delay="520" class="mt-10 flex flex-wrap gap-4">
       <Button href="#fusion" variant="primary" class="!bg-sand-50 !text-ink-800 hover:!bg-olive-500 hover:!text-sand-50">
-        Descubre La Fusió
+        {t('hero.cta.primary')}
         <Icon name="arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </Button>
       <Button href="#visitanos" variant="ghost" class="!border-sand-50/30 !text-sand-50 hover:!border-sand-50 hover:!bg-sand-50/10">
-        Visítanos
+        {t('hero.cta.secondary')}
       </Button>
     </div>
 
@@ -98,7 +107,7 @@ const chips = [
     class="animate-drift pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-sand-50/60 sm:flex"
     style="animation-duration: 6s;"
   >
-    <span class="text-[0.65rem] font-medium uppercase tracking-[0.2em]">Descubre más</span>
+    <span class="text-[0.65rem] font-medium uppercase tracking-[0.2em]">{t('hero.scrollCue')}</span>
     <span class="h-8 w-px bg-sand-50/40"></span>
   </div>
 </section>

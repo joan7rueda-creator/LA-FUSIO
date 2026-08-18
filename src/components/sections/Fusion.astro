@@ -1,6 +1,14 @@
 ---
 import Icon from '@/components/ui/Icon.astro';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+import { useTranslations, type Lang } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section id="fusion" class="relative overflow-hidden bg-sand-100 py-24 sm:py-32 lg:py-40">
@@ -12,14 +20,13 @@ import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
   <div class="relative mx-auto max-w-[90rem] px-5 lg:px-10">
     <div class="max-w-2xl">
       <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
-        La fusión
+        {t('fusion.eyebrow')}
       </p>
       <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
-        Dos mundos.<br />Un mismo lugar.
+        {t('fusion.title1')}<br />{t('fusion.title2')}
       </h2>
       <p data-reveal data-reveal-delay="200" class="mt-7 max-w-lg text-base leading-relaxed text-ink-700/75 sm:text-lg">
-        La Fusió nace de la unión entre la pastelería y las flores. Un espacio pensado para disfrutar,
-        desconectar y descubrir algo diferente en cada visita.
+        {t('fusion.text')}
       </p>
     </div>
 
@@ -33,9 +40,10 @@ import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
         >
           <div class="overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/15">
             <ImagePlaceholder
+              lang={lang}
               tone="ink"
               icon="cake"
-              label="Pastelería — obrador y creaciones artesanales"
+              label={t('fusion.pasteleria.imageLabel')}
               class="relative aspect-[4/3] w-full"
             />
           </div>
@@ -44,9 +52,9 @@ import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
               <Icon name="cake" class="h-4.5 w-4.5" />
             </span>
             <div>
-              <h3 class="font-display text-2xl font-medium text-ink-800">Pastelería</h3>
+              <h3 class="font-display text-2xl font-medium text-ink-800">{t('fusion.pasteleria.title')}</h3>
               <p class="mt-1.5 max-w-xs text-sm leading-relaxed text-ink-700/70">
-                El sabor, el aroma y el arte de la repostería artesanal.
+                {t('fusion.pasteleria.desc')}
               </p>
             </div>
           </div>
@@ -59,9 +67,10 @@ import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
         >
           <div class="overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/15">
             <ImagePlaceholder
+              lang={lang}
               tone="olive"
               icon="flower"
-              label="Flores — composición floral sobre la barra"
+              label={t('fusion.flores.imageLabel')}
               class="relative aspect-[4/3] w-full"
             />
           </div>
@@ -70,9 +79,9 @@ import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
               <Icon name="flower" class="h-4.5 w-4.5" />
             </span>
             <div>
-              <h3 class="font-display text-2xl font-medium text-ink-800">Flores</h3>
+              <h3 class="font-display text-2xl font-medium text-ink-800">{t('fusion.flores.title')}</h3>
               <p class="mt-1.5 max-w-xs text-sm leading-relaxed text-ink-700/70">
-                Color, naturaleza y composiciones que puedes llevar contigo.
+                {t('fusion.flores.desc')}
               </p>
             </div>
           </div>

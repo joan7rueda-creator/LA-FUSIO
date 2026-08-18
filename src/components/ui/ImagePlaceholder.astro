@@ -3,11 +3,13 @@
 // Pensado para sustituirse 1:1 por <Image src={...} alt="..." /> (astro:assets)
 // sin tocar el layout de la sección: ocupa el mismo contenedor con aspect-ratio.
 import Icon from './Icon.astro';
+import { useTranslations, type Lang } from '@/i18n/utils';
 
 type Tone = 'olive' | 'sand' | 'ink' | 'bloom';
 
 interface Props {
   label: string;
+  lang: Lang;
   tone?: Tone;
   icon?: 'coffee' | 'flower' | 'leaf' | 'gift' | 'sparkle' | 'cake';
   class?: string;
@@ -22,6 +24,7 @@ interface Props {
 
 const {
   label,
+  lang,
   tone = 'olive',
   icon = 'leaf',
   class: className,
@@ -30,6 +33,8 @@ const {
   hideLabel = false,
   ...rest
 } = Astro.props;
+
+const t = useTranslations(lang);
 
 const showCenterLabel = !compact && !hideLabel;
 const showCornerTag = !compact;
@@ -71,7 +76,7 @@ const tones: Record<Tone, string> = {
     <span
       class="absolute bottom-3 right-3 z-10 rounded-full border border-sand-50/30 bg-ink-900/30 px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-sand-50/80 backdrop-blur-sm"
     >
-      Foto pendiente
+      {t('placeholder.photoPending')}
     </span>
   )}
 </div>

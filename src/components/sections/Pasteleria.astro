@@ -1,12 +1,20 @@
 ---
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+import { useTranslations, type Lang } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const items = [
-  { n: '01', name: 'Bollería', desc: 'Cada mañana, recién horneada.' },
-  { n: '02', name: 'Pastelería de temporada', desc: 'Creaciones que cambian con el calendario.' },
-  { n: '03', name: 'Tartas y dulces', desc: 'Para compartir o para regalar.' },
-  { n: '04', name: 'Espresso', desc: 'Intenso y directo, la base de todo.' },
-  { n: '05', name: 'Café con leche', desc: 'Suave y cercano, para tomarse con calma.' },
+  { n: '01', name: t('pasteleria.item1.name'), desc: t('pasteleria.item1.desc') },
+  { n: '02', name: t('pasteleria.item2.name'), desc: t('pasteleria.item2.desc') },
+  { n: '03', name: t('pasteleria.item3.name'), desc: t('pasteleria.item3.desc') },
+  { n: '04', name: t('pasteleria.item4.name'), desc: t('pasteleria.item4.desc') },
+  { n: '05', name: t('pasteleria.item5.name'), desc: t('pasteleria.item5.desc') },
 ];
 ---
 
@@ -16,17 +24,18 @@ const items = [
       <div class="lg:col-span-5">
         <div class="lg:sticky lg:top-28">
           <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-300">
-            Pastelería artesanal
+            {t('pasteleria.eyebrow')}
           </p>
           <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 max-w-sm font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl">
-            La pastelería es solo el principio.
+            {t('pasteleria.title')}
           </h2>
 
           <div data-reveal="scale" data-reveal-delay="220" class="mt-10 overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/40">
             <ImagePlaceholder
+              lang={lang}
               tone="ink"
               icon="cake"
-              label="Fotografía — obrador y vitrina de pastelería artesanal"
+              label={t('pasteleria.imageLabel')}
               class="relative aspect-[3/4] w-full"
             />
           </div>
@@ -54,7 +63,7 @@ const items = [
           ))}
         </ul>
         <p class="mt-8 text-xs uppercase tracking-[0.14em] text-sand-50/35">
-          Carta sujeta a variaciones de temporada.
+          {t('pasteleria.footnote')}
         </p>
       </div>
     </div>

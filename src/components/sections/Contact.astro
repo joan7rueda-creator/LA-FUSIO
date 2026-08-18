@@ -2,12 +2,20 @@
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
 import { SITE } from '@/data/site';
+import { useTranslations, type Lang } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const info = [
-  { icon: 'pin' as const, label: 'Dirección', value: SITE.address.display },
-  { icon: 'phone' as const, label: 'Teléfono', value: SITE.contact.phoneDisplay },
-  { icon: 'mail' as const, label: 'Email', value: SITE.contact.email },
-  { icon: 'instagram' as const, label: 'Instagram', value: SITE.social.instagramHandle },
+  { icon: 'pin' as const, label: t('contact.info.address'), value: t('contact.placeholderAddress') },
+  { icon: 'phone' as const, label: t('contact.info.phone'), value: t('contact.placeholderPhone') },
+  { icon: 'mail' as const, label: t('contact.info.email'), value: SITE.contact.email },
+  { icon: 'instagram' as const, label: t('contact.info.instagram'), value: SITE.social.instagramHandle },
 ];
 ---
 
@@ -15,10 +23,10 @@ const info = [
   <div class="mx-auto max-w-[90rem] px-5 lg:px-10">
     <div class="max-w-xl">
       <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-700">
-        Visítanos
+        {t('contact.eyebrow')}
       </p>
       <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink-800 sm:text-5xl lg:text-6xl">
-        Ven a vernos.
+        {t('contact.title')}
       </h2>
     </div>
 
@@ -41,12 +49,12 @@ const info = [
               <Icon name="clock" class="h-4.5 w-4.5" />
             </span>
             <div class="flex-1">
-              <dt class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-700/50">Horarios</dt>
+              <dt class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-700/50">{t('contact.hours.title')}</dt>
               <dd class="mt-1.5 space-y-1">
                 {SITE.hours.map((h) => (
                   <div class="flex justify-between gap-6 text-sm text-ink-800/85">
-                    <span>{h.day}</span>
-                    <span class="text-ink-700/45">Consultar</span>
+                    <span>{t(`hours.${h.dayKey}` as const)}</span>
+                    <span class="text-ink-700/45">{t('contact.hours.consultar')}</span>
                   </div>
                 ))}
               </dd>
@@ -55,7 +63,7 @@ const info = [
         </dl>
 
         <Button href={SITE.maps.directionsUrl || '#'} variant="primary" class="mt-8">
-          Cómo llegar
+          {t('contact.cta')}
           <Icon name="arrow-up-right" class="h-4 w-4" />
         </Button>
       </div>
@@ -71,7 +79,7 @@ const info = [
           <div class="relative z-10 flex flex-col items-center gap-3 px-6 text-center text-olive-800/70">
             <Icon name="map" class="h-8 w-8" />
             <p class="text-xs font-medium uppercase tracking-[0.14em]">
-              Mapa — se activará con Google Maps al confirmar la ubicación
+              {t('contact.map.text')}
             </p>
           </div>
         </div>

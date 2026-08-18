@@ -1,32 +1,39 @@
 ---
 import { SITE } from '@/data/site';
 import Icon from '@/components/ui/Icon.astro';
-import { withBase } from '@/lib/url';
+import { useTranslations, useTranslatedPath, type Lang } from '@/i18n/utils';
 
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const home = useTranslatedPath(lang)('/');
 const year = new Date().getFullYear();
 
 const nav = [
-  { href: '#fusion', label: 'La Fusió' },
-  { href: '#pasteleria', label: 'Pastelería' },
-  { href: '#flores', label: 'Flores' },
-  { href: '#productos', label: 'Productos' },
+  { href: '#fusion', label: t('nav.fusion') },
+  { href: '#pasteleria', label: t('nav.pasteleria') },
+  { href: '#flores', label: t('nav.flores') },
+  { href: '#productos', label: t('products.title') },
 ];
 
 const legal = [
-  { href: withBase('privacidad/'), label: 'Política de privacidad' },
-  { href: withBase('cookies/'), label: 'Cookies' },
-  { href: withBase('aviso-legal/'), label: 'Aviso legal' },
+  { href: useTranslatedPath(lang)('/privacidad/'), label: t('footer.legal.privacy') },
+  { href: useTranslatedPath(lang)('/cookies/'), label: t('footer.legal.cookies') },
+  { href: useTranslatedPath(lang)('/aviso-legal/'), label: t('footer.legal.avisoLegal') },
 ];
 ---
 
 <footer class="border-t border-sand-50/10 bg-ink-800 text-sand-100">
   <div class="mx-auto grid max-w-[90rem] gap-12 px-5 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:px-10 lg:py-20">
     <div class="sm:col-span-2 lg:col-span-2">
-      <a href="#top" class="font-display text-2xl font-semibold tracking-[0.02em] text-sand-50">
+      <a href={home} class="font-display text-2xl font-semibold tracking-[0.02em] text-sand-50">
         LA <span class="text-olive-400">FUSIÓ</span>
       </a>
       <p class="mt-4 max-w-xs text-sm leading-relaxed text-sand-100/65">
-        Un espacio donde la pastelería y las flores se encuentran. Ven a disfrutar, descubrir y quedarte un poco más.
+        {t('footer.tagline')}
       </p>
       <a
         href={SITE.social.instagram}
@@ -40,7 +47,7 @@ const legal = [
     </div>
 
     <div>
-      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">Navegación</h2>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">{t('footer.nav.title')}</h2>
       <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
         {nav.map((item) => (
           <li><a href={item.href} class="transition-colors duration-200 hover:text-olive-300">{item.label}</a></li>
@@ -49,10 +56,10 @@ const legal = [
     </div>
 
     <div>
-      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">Contacto</h2>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">{t('footer.contact.title')}</h2>
       <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
-        <li>{SITE.address.display}</li>
-        <li>{SITE.contact.phoneDisplay}</li>
+        <li>{t('contact.placeholderAddress')}</li>
+        <li>{t('contact.placeholderPhone')}</li>
         <li>
           <a href={`mailto:${SITE.contact.email}`} class="break-all transition-colors duration-200 hover:text-olive-300">
             {SITE.contact.email}
@@ -62,12 +69,12 @@ const legal = [
     </div>
 
     <div>
-      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">Horario</h2>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">{t('footer.hours.title')}</h2>
       <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
         {SITE.hours.map((h) => (
           <li class="flex justify-between gap-4">
-            <span>{h.day}</span>
-            <span class="text-sand-100/45">Consultar</span>
+            <span>{t(`hours.${h.dayKey}` as const)}</span>
+            <span class="text-sand-100/45">{t('contact.hours.consultar')}</span>
           </li>
         ))}
       </ul>
@@ -77,14 +84,14 @@ const legal = [
   <div class="border-t border-sand-50/10">
     <div class="mx-auto flex max-w-[90rem] flex-col items-center gap-6 px-5 py-10 text-center lg:px-10">
       <p class="font-display text-2xl font-medium tracking-tight text-sand-50 sm:text-3xl">
-        Pastelería, flores y momentos.
+        {t('footer.bigline')}
       </p>
     </div>
   </div>
 
   <div class="border-t border-sand-50/10">
     <div class="mx-auto flex max-w-[90rem] flex-col gap-3 px-5 py-6 text-xs text-sand-100/45 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-      <p>&copy; {year} {SITE.name}. Todos los derechos reservados.</p>
+      <p>&copy; {year} {SITE.name}. {t('footer.legal.rights')}</p>
       <ul class="flex flex-wrap gap-x-5 gap-y-1">
         {legal.map((item) => (
           <li><a href={item.href} class="transition-colors duration-200 hover:text-sand-100">{item.label}</a></li>
