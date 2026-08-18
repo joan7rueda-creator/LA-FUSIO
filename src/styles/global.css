@@ -1,8 +1,7 @@
 @import 'tailwindcss';
 
 /* Fuentes autoalojadas (sin peticiones externas a Google Fonts → mejor rendimiento y privacidad) */
-@import '@fontsource-variable/ibarra-real-nova';
-@import '@fontsource-variable/ibarra-real-nova/wght-italic.css';
+@import '@fontsource-variable/caveat';
 @import '@fontsource-variable/work-sans';
 
 @theme {
@@ -52,7 +51,7 @@
   --color-bloom-500: #bf7a55;
   --color-bloom-700: #8f5537;
 
-  --font-display: 'Ibarra Real Nova Variable', ui-serif, Georgia, serif;
+  --font-display: 'Caveat Variable', ui-serif, Georgia, serif;
   --font-sans: 'Work Sans Variable', ui-sans-serif, system-ui, sans-serif;
 
   /*
