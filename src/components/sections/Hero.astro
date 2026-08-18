@@ -4,7 +4,7 @@ import Icon from '@/components/ui/Icon.astro';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
 
 const chips = [
-  { icon: 'coffee' as const, label: 'Café de especialidad' },
+  { icon: 'cake' as const, label: 'Pastelería artesanal' },
   { icon: 'flower' as const, label: 'Flores seleccionadas' },
   { icon: 'sparkle' as const, label: 'Un espacio para disfrutar' },
 ];
@@ -14,8 +14,8 @@ const chips = [
   <div class="absolute inset-0" data-reveal="mask" data-reveal-delay="0">
     <ImagePlaceholder
       tone="olive"
-      icon="coffee"
-      label="Fotografía hero — interior de LAFUSIO: mesa con café, flores y luz natural"
+      icon="cake"
+      label="Fotografía hero — interior de La Fusió: pastelería, flores y luz natural"
       hideLabel
       class="relative h-full w-full scale-[1.12]"
       data-parallax
@@ -27,7 +27,7 @@ const chips = [
   <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/45 to-ink-900/10"></div>
   <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-900/60 via-transparent to-ink-900/30"></div>
 
-  <!-- Chip flotante: café de especialidad -->
+  <!-- Chip flotante: pastelería artesanal -->
   <div
     data-reveal="bud"
     data-reveal-delay="700"
@@ -53,7 +53,7 @@ const chips = [
       data-reveal-delay="0"
       class="text-xs font-semibold uppercase tracking-[0.32em] text-sand-50/70"
     >
-      Café &amp; Floristería
+      Pastelería &amp; Floristería
     </p>
 
     <h1
@@ -61,7 +61,7 @@ const chips = [
       data-reveal-delay="120"
       class="mt-5 max-w-4xl font-display text-[13vw] font-medium leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl"
     >
-      Café, flores y momentos.
+      Pastelería, flores y momentos.
     </h1>
 
     <p
@@ -69,12 +69,12 @@ const chips = [
       data-reveal-delay="360"
       class="mt-7 max-w-md text-base leading-relaxed text-sand-50/80 sm:text-lg"
     >
-      Un lugar donde disfrutar de un buen café, descubrir flores y quedarte un poco más.
+      Un lugar donde disfrutar de nuestra pastelería, tomar un café y descubrir flores.
     </p>
 
     <div data-reveal data-reveal-delay="520" class="mt-10 flex flex-wrap gap-4">
       <Button href="#fusion" variant="primary" class="!bg-sand-50 !text-ink-800 hover:!bg-olive-500 hover:!text-sand-50">
-        Descubre LAFUSIO
+        Descubre La Fusió
         <Icon name="arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </Button>
       <Button href="#visitanos" variant="ghost" class="!border-sand-50/30 !text-sand-50 hover:!border-sand-50 hover:!bg-sand-50/10">

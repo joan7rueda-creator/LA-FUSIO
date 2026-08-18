@@ -15,7 +15,7 @@ const ogImageURL = new URL(image ?? 'og-image.jpg', Astro.site);
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'CafeOrCoffeeShop',
+  '@type': ['Bakery', 'FlowerShop'],
   name: SITE.name,
   description,
   url: Astro.site?.toString(),

@@ -2,31 +2,31 @@
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
 
 const items = [
-  { n: '01', name: 'Espresso', desc: 'Intenso y directo, la base de todo.' },
-  { n: '02', name: 'Cappuccino', desc: 'Cremoso, equilibrado, de siempre.' },
-  { n: '03', name: 'Latte', desc: 'Suave y cercano, para tomarse con calma.' },
-  { n: '04', name: 'Café filtrado', desc: 'Claridad y matices, gota a gota.' },
-  { n: '05', name: 'Pastelería', desc: 'El acompañamiento perfecto para cada café.' },
+  { n: '01', name: 'Bollería', desc: 'Cada mañana, recién horneada.' },
+  { n: '02', name: 'Pastelería de temporada', desc: 'Creaciones que cambian con el calendario.' },
+  { n: '03', name: 'Tartas y dulces', desc: 'Para compartir o para regalar.' },
+  { n: '04', name: 'Espresso', desc: 'Intenso y directo, la base de todo.' },
+  { n: '05', name: 'Café con leche', desc: 'Suave y cercano, para tomarse con calma.' },
 ];
 ---
 
-<section id="cafe" class="relative overflow-hidden bg-ink-800 py-24 text-sand-50 sm:py-32 lg:py-36">
+<section id="pasteleria" class="relative overflow-hidden bg-ink-800 py-24 text-sand-50 sm:py-32 lg:py-36">
   <div class="mx-auto max-w-[90rem] px-5 lg:px-10">
     <div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
       <div class="lg:col-span-5">
         <div class="lg:sticky lg:top-28">
           <p data-reveal class="text-xs font-semibold uppercase tracking-[0.28em] text-olive-300">
-            Café de especialidad
+            Pastelería artesanal
           </p>
           <h2 data-reveal="lg" data-reveal-delay="80" class="mt-5 max-w-sm font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-5xl">
-            El café es solo el principio.
+            La pastelería es solo el principio.
           </h2>
 
           <div data-reveal="scale" data-reveal-delay="220" class="mt-10 overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/40">
             <ImagePlaceholder
               tone="ink"
-              icon="coffee"
-              label="Fotografía — preparación de café de especialidad"
+              icon="cake"
+              label="Fotografía — obrador y vitrina de pastelería artesanal"
               class="relative aspect-[3/4] w-full"
             />
           </div>

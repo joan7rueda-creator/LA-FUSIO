@@ -1,4 +1,4 @@
-// Sistema de animación al hacer scroll para toda la web LAFUSIO.
+// Sistema de animación al hacer scroll para toda la web de La Fusió.
 // Dos mecanismos, ambos basados solo en transform/opacity (rendimiento) y
 // respetando prefers-reduced-motion:
 //

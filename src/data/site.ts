@@ -1,10 +1,10 @@
-// Datos de contacto y negocio de LAFUSIO.
+// Datos de contacto y negocio de La Fusió.
 // TODO: sustituir cada placeholder por el dato real antes de publicar.
 // Editar aquí actualiza automáticamente footer, cabecera, contacto y SEO estructurado.
 
 export const SITE = {
-  name: 'LAFUSIO',
-  tagline: 'Café, flores y momentos.',
+  name: 'La Fusió',
+  tagline: 'Pastelería, flores y momentos.',
 
   address: {
     // TODO: dirección real del local.
