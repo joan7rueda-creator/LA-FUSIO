@@ -34,7 +34,7 @@ export const ui = {
     'hero.chip.flores': 'Flors seleccionades',
     'hero.chip.espacio': 'Un espai per gaudir',
     'hero.scrollCue': 'Descobreix més',
-    'hero.imageLabel': 'Fotografia hero — interior de La Fusió: pastisseria, flors i llum natural',
+    'hero.imageLabel': "Façana i entrada de La Fusió a Sant Celoni, envoltada de flors i plantes",
 
     'fusion.eyebrow': 'La fusió',
     'fusion.title1': 'Dos mons.',
@@ -192,7 +192,7 @@ export const ui = {
     'hero.chip.flores': 'Flores seleccionadas',
     'hero.chip.espacio': 'Un espacio para disfrutar',
     'hero.scrollCue': 'Descubre más',
-    'hero.imageLabel': 'Fotografía hero — interior de La Fusió: pastelería, flores y luz natural',
+    'hero.imageLabel': 'Fachada y entrada de La Fusió en Sant Celoni, rodeada de flores y plantas',
 
     'fusion.eyebrow': 'La fusión',
     'fusion.title1': 'Dos mundos.',

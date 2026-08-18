@@ -1,8 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
-import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
 import { useTranslations, type Lang } from '@/i18n/utils';
+import heroImage from '@/assets/hero/storefront.jpg';
 
 interface Props {
   lang: Lang;
@@ -20,21 +21,19 @@ const chips = [
 
 <section id="top" class="relative isolate h-[100svh] min-h-[640px] w-full overflow-hidden bg-ink-900 text-sand-50" data-parallax-scope>
   <div class="absolute inset-0" data-reveal="mask" data-reveal-delay="0">
-    <ImagePlaceholder
-      lang={lang}
-      tone="clay"
-      icon="cake"
-      label={t('hero.imageLabel')}
-      hideLabel
-      class="relative h-full w-full scale-[1.12]"
+    <Image
+      src={heroImage}
+      alt={t('hero.imageLabel')}
+      width={1920}
+      class="relative h-full w-full scale-[1.12] object-cover object-[center_32%]"
       data-parallax
       data-parallax-speed="0.08"
       data-parallax-zoom="true"
     />
   </div>
 
-  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/45 to-ink-900/10"></div>
-  <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-900/60 via-transparent to-ink-900/30"></div>
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/55 to-ink-900/20"></div>
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink-900/55 via-ink-900/10 to-ink-900/40"></div>
 
   <!-- Chip flotante: pastelería artesanal -->
   <div
