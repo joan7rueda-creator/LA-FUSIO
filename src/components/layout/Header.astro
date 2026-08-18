@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from '@/components/ui/Icon.astro';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.astro';
 import { useTranslations, useTranslatedPath, type Lang } from '@/i18n/utils';
+import logo from '@/assets/brand/lafusio-logo.png';
 
 interface Props {
   lang: Lang;
@@ -25,10 +27,14 @@ const links = [
   data-header
 >
   <div class="mx-auto flex max-w-[90rem] items-center justify-between px-5 py-4 lg:px-10">
-    <a href={home} class="flex shrink-0 items-center gap-2">
-      <span class="font-display text-xl font-semibold tracking-[0.02em] text-ink-800">
-        LA <span class="text-clay-700">FUSIÓ</span>
-      </span>
+    <a href={home} class="flex shrink-0 items-center">
+      <Image
+        src={logo}
+        alt="La Fusió — Sant Celoni"
+        width={112}
+        height={112}
+        class="h-11 w-11 rounded-full ring-1 ring-ink-800/10"
+      />
     </a>
 
     <nav aria-label="Principal" class="hidden lg:flex lg:items-center lg:gap-9">

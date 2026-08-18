@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { SITE } from '@/data/site';
 import Icon from '@/components/ui/Icon.astro';
 import { useTranslations, useTranslatedPath, type Lang } from '@/i18n/utils';
+import logo from '@/assets/brand/lafusio-logo.png';
 
 interface Props {
   lang: Lang;
@@ -29,8 +31,14 @@ const legal = [
 <footer class="border-t border-sand-50/10 bg-ink-800 text-sand-100">
   <div class="mx-auto grid max-w-[90rem] gap-12 px-5 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:px-10 lg:py-20">
     <div class="sm:col-span-2 lg:col-span-2">
-      <a href={home} class="font-display text-2xl font-semibold tracking-[0.02em] text-sand-50">
-        LA <span class="text-clay-400">FUSIÓ</span>
+      <a href={home} class="inline-flex">
+        <Image
+          src={logo}
+          alt="La Fusió — Sant Celoni"
+          width={112}
+          height={112}
+          class="h-14 w-14 rounded-full ring-1 ring-sand-50/15"
+        />
       </a>
       <p class="mt-4 max-w-xs text-sm leading-relaxed text-sand-100/65">
         {t('footer.tagline')}
