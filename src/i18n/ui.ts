@@ -42,10 +42,12 @@ export const ui = {
     'fusion.text':
         "La Fusió neix de la unió entre la pastisseria i les flors. Un espai pensat per gaudir, desconnectar i descobrir alguna cosa diferent a cada visita.",
     'fusion.pasteleria.title': 'Pastisseria',
-    'fusion.pasteleria.desc': "El sabor, l'aroma i l'art de la rebosteria artesanal.",
+    'fusion.pasteleria.desc':
+      "El sabor, l'aroma i l'art de la rebosteria artesanal. Vine a esmorzar, fer un berenar o simplement aturar-te un moment i desconnectar amb un bon cafè.",
     'fusion.pasteleria.imageLabel': 'Taulell de La Fusió amb dolços, te i flors en primer pla',
     'fusion.flores.title': 'Flors',
-    'fusion.flores.desc': "Color, natura i composicions que et pots endur.",
+    'fusion.flores.desc':
+      "Color, natura i composicions que et pots endur. Vine a fer-te el teu ram, trobar aquell detall que buscaves o descobrir flors noves per a cada ocasió.",
     'fusion.flores.imageLabel': 'Taula amb flors i composicions florals de La Fusió',
 
     'pasteleria.eyebrow': 'Pastisseria artesanal',
@@ -200,10 +202,12 @@ export const ui = {
     'fusion.text':
       'La Fusió nace de la unión entre la pastelería y las flores. Un espacio pensado para disfrutar, desconectar y descubrir algo diferente en cada visita.',
     'fusion.pasteleria.title': 'Pastelería',
-    'fusion.pasteleria.desc': 'El sabor, el aroma y el arte de la repostería artesanal.',
+    'fusion.pasteleria.desc':
+      'El sabor, el aroma y el arte de la repostería artesanal. Ven a desayunar, merendar o simplemente parar un momento y desconectar con un buen café.',
     'fusion.pasteleria.imageLabel': 'Mostrador de La Fusió con dulces, té y flores en primer plano',
     'fusion.flores.title': 'Flores',
-    'fusion.flores.desc': 'Color, naturaleza y composiciones que puedes llevar contigo.',
+    'fusion.flores.desc':
+      'Color, naturaleza y composiciones que puedes llevarte. Ven a hacerte tu ramo, encontrar ese detalle que buscabas o descubrir flores nuevas para cada ocasión.',
     'fusion.flores.imageLabel': 'Mesa con flores y composiciones florales de La Fusió',
 
     'pasteleria.eyebrow': 'Pastelería artesanal',
