@@ -52,7 +52,7 @@ export const ui = {
 
     'pasteleria.eyebrow': 'Pastisseria artesanal',
     'pasteleria.title': 'La pastisseria és només el principi.',
-    'pasteleria.imageLabel': 'Fotografia — obrador i vitrina de pastisseria artesanal',
+    'pasteleria.imageLabel': 'Mini-postres amb fruits vermells i formatge cremós sobre galeta',
     'pasteleria.footnote': 'Carta subjecta a variacions de temporada.',
     'pasteleria.item1.name': 'Brioixeria',
     'pasteleria.item1.desc': 'Cada matí, acabada de fer al forn.',
@@ -212,7 +212,7 @@ export const ui = {
 
     'pasteleria.eyebrow': 'Pastelería artesanal',
     'pasteleria.title': 'La pastelería es solo el principio.',
-    'pasteleria.imageLabel': 'Fotografía — obrador y vitrina de pastelería artesanal',
+    'pasteleria.imageLabel': 'Mini-postres con frutos rojos y queso cremoso sobre galleta',
     'pasteleria.footnote': 'Carta sujeta a variaciones de temporada.',
     'pasteleria.item1.name': 'Bollería',
     'pasteleria.item1.desc': 'Cada mañana, recién horneada.',

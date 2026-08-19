@@ -1,6 +1,7 @@
 ---
-import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+import { Image } from 'astro:assets';
 import { useTranslations, type Lang } from '@/i18n/utils';
+import pasteleriaImage from '@/assets/cafe/tarta-frutas.jpg';
 
 interface Props {
   lang: Lang;
@@ -31,12 +32,11 @@ const items = [
           </h2>
 
           <div data-reveal="scale" data-reveal-delay="220" class="mt-10 overflow-hidden rounded-[1.75rem] shadow-2xl shadow-ink-900/40">
-            <ImagePlaceholder
-              lang={lang}
-              tone="ink"
-              icon="cake"
-              label={t('pasteleria.imageLabel')}
-              class="relative aspect-[3/4] w-full"
+            <Image
+              src={pasteleriaImage}
+              alt={t('pasteleria.imageLabel')}
+              width={900}
+              class="relative aspect-[3/4] w-full object-cover object-[center_35%]"
             />
           </div>
         </div>
