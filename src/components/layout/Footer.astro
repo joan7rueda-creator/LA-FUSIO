@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { SITE } from '@/data/site';
+import { SITE, formatRanges } from '@/data/site';
 import Icon from '@/components/ui/Icon.astro';
 import { useTranslations, useTranslatedPath, type Lang } from '@/i18n/utils';
 import logo from '@/assets/brand/lafusio-logo.png';
@@ -66,8 +66,16 @@ const legal = [
     <div>
       <h2 class="text-xs font-semibold uppercase tracking-[0.14em] text-sand-50/90">{t('footer.contact.title')}</h2>
       <ul class="mt-4 space-y-2.5 text-sm text-sand-100/65">
-        <li>{t('contact.placeholderAddress')}</li>
-        <li>{t('contact.placeholderPhone')}</li>
+        <li>
+          <a href={SITE.maps.directionsUrl} target="_blank" rel="noopener noreferrer" class="transition-colors duration-200 hover:text-clay-300">
+            {SITE.address.display}
+          </a>
+        </li>
+        <li>
+          <a href={`tel:${SITE.contact.phone}`} class="transition-colors duration-200 hover:text-clay-300">
+            {SITE.contact.phoneDisplay}
+          </a>
+        </li>
         <li>
           <a href={`mailto:${SITE.contact.email}`} class="break-all transition-colors duration-200 hover:text-clay-300">
             {SITE.contact.email}
@@ -82,7 +90,9 @@ const legal = [
         {SITE.hours.map((h) => (
           <li class="flex justify-between gap-4">
             <span>{t(`hours.${h.dayKey}` as const)}</span>
-            <span class="text-sand-100/45">{t('contact.hours.consultar')}</span>
+            <span class="text-right text-sand-100/50">
+              {h.ranges.length > 0 ? formatRanges(h.ranges) : t('hours.closed')}
+            </span>
           </li>
         ))}
       </ul>

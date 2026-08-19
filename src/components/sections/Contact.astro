@@ -1,7 +1,7 @@
 ---
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
-import { SITE } from '@/data/site';
+import { SITE, formatRanges } from '@/data/site';
 import { useTranslations, type Lang } from '@/i18n/utils';
 
 interface Props {
@@ -12,10 +12,10 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const info = [
-  { icon: 'pin' as const, label: t('contact.info.address'), value: t('contact.placeholderAddress') },
-  { icon: 'phone' as const, label: t('contact.info.phone'), value: t('contact.placeholderPhone') },
-  { icon: 'mail' as const, label: t('contact.info.email'), value: SITE.contact.email },
-  { icon: 'instagram' as const, label: t('contact.info.instagram'), value: SITE.social.instagramHandle },
+  { icon: 'pin' as const, label: t('contact.info.address'), value: SITE.address.display, href: SITE.maps.directionsUrl },
+  { icon: 'phone' as const, label: t('contact.info.phone'), value: SITE.contact.phoneDisplay, href: `tel:${SITE.contact.phone}` },
+  { icon: 'mail' as const, label: t('contact.info.email'), value: SITE.contact.email, href: `mailto:${SITE.contact.email}` },
+  { icon: 'instagram' as const, label: t('contact.info.instagram'), value: SITE.social.instagramHandle, href: SITE.social.instagram },
 ];
 ---
 
@@ -40,7 +40,11 @@ const info = [
               </span>
               <div>
                 <dt class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-700/50">{item.label}</dt>
-                <dd class="mt-0.5 text-base text-ink-800">{item.value}</dd>
+                <dd class="mt-0.5 text-base text-ink-800">
+                  <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined} class="transition-colors duration-200 hover:text-clay-700">
+                    {item.value}
+                  </a>
+                </dd>
               </div>
             </div>
           ))}
@@ -54,7 +58,9 @@ const info = [
                 {SITE.hours.map((h) => (
                   <div class="flex justify-between gap-6 text-sm text-ink-800/85">
                     <span>{t(`hours.${h.dayKey}` as const)}</span>
-                    <span class="text-ink-700/45">{t('contact.hours.consultar')}</span>
+                    <span class="text-right text-ink-700/70">
+                      {h.ranges.length > 0 ? formatRanges(h.ranges) : t('hours.closed')}
+                    </span>
                   </div>
                 ))}
               </dd>
@@ -62,26 +68,22 @@ const info = [
           </div>
         </dl>
 
-        <Button href={SITE.maps.directionsUrl || '#'} variant="primary" class="mt-8">
+        <Button href={SITE.maps.directionsUrl} variant="primary" class="mt-8">
           {t('contact.cta')}
           <Icon name="arrow-up-right" class="h-4 w-4" />
         </Button>
       </div>
 
-      <!--
-        Placeholder de mapa. Cuando tengamos la ubicación real, sustituir este div
-        por un <iframe> apuntando a SITE.maps.embedUrl (ver src/data/site.ts), p.ej.:
-        <iframe src={SITE.maps.embedUrl} class="h-full w-full" loading="lazy" ...></iframe>
-      -->
       <div data-reveal="scale" data-reveal-delay="240" class="lg:col-span-7">
-        <div class="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-[1.75rem] bg-clay-100 sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[26rem]">
-          <div class="absolute inset-0 opacity-[0.15] [background-image:linear-gradient(currentColor_1px,transparent_1px),linear-gradient(90deg,currentColor_1px,transparent_1px)] [background-size:32px_32px] text-clay-700"></div>
-          <div class="relative z-10 flex flex-col items-center gap-3 px-6 text-center text-clay-800/70">
-            <Icon name="map" class="h-8 w-8" />
-            <p class="text-xs font-medium uppercase tracking-[0.14em]">
-              {t('contact.map.text')}
-            </p>
-          </div>
+        <div class="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] bg-clay-100 sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[26rem]">
+          <iframe
+            src={SITE.maps.embedUrl}
+            title={t('contact.title')}
+            class="h-full w-full grayscale-[15%]"
+            style="border:0;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </div>

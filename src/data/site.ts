@@ -1,16 +1,24 @@
 // Datos de contacto y negocio de La Fusió (independientes del idioma).
-// TODO: sustituir cada placeholder por el dato real antes de publicar.
 // Editar aquí actualiza automáticamente footer, cabecera, contacto y SEO estructurado.
-// Los textos que sí varían según el idioma (p.ej. "Dirección por confirmar") viven en
-// src/i18n/ui.ts, no aquí.
+// Los textos que sí varían según el idioma viven en src/i18n/ui.ts, no aquí.
+
+const RAW_ADDRESS = 'Carrer Major, 37-39, Baixos, 08470 Sant Celoni, Barcelona';
 
 export const SITE = {
   name: 'La Fusió',
 
+  address: {
+    street: 'Carrer Major, 37-39, Baixos',
+    postalCode: '08470',
+    city: 'Sant Celoni',
+    region: 'Barcelona',
+    country: 'ES',
+    display: RAW_ADDRESS,
+  },
+
   contact: {
-    // TODO: teléfono real.
-    phone: '',
-    // TODO: email real.
+    phone: '+34938676288',
+    phoneDisplay: '938 67 62 88',
     email: 'hola@lafusio.com',
   },
 
@@ -20,20 +28,24 @@ export const SITE = {
     instagramHandle: '@lafusio',
   },
 
-  // TODO: horario real. Días sin franjas (`ranges`) se muestran con la etiqueta "consultar".
-  // `dayKey` referencia una clave de traducción hours.* en src/i18n/ui.ts.
+  // Horario real. `dayKey` referencia una clave de traducción hours.* en src/i18n/ui.ts.
+  // Días sin franjas (`ranges` vacío) se muestran con la etiqueta "Tancat"/"Cerrado".
   hours: [
-    { dayKey: 'weekdays', ranges: [] as [string, string][] },
-    { dayKey: 'saturday', ranges: [] as [string, string][] },
-    { dayKey: 'sunday', ranges: [] as [string, string][] },
+    { dayKey: 'monday', ranges: [] as [string, string][] },
+    { dayKey: 'tuesdayFriday', ranges: [['8:30', '13:00'], ['17:00', '20:00']] as [string, string][] },
+    { dayKey: 'saturday', ranges: [['8:30', '14:00'], ['17:00', '20:00']] as [string, string][] },
+    { dayKey: 'sunday', ranges: [['8:30', '14:00']] as [string, string][] },
   ],
 
-  // Placeholder de mapa: estructura lista para sustituir por un iframe de Google
-  // Maps (u otro proveedor) en cuanto tengamos la ubicación real. Ver Contact.astro.
   maps: {
-    embedUrl: '',
-    directionsUrl: '',
+    embedUrl: `https://www.google.com/maps?q=${encodeURIComponent(RAW_ADDRESS)}&output=embed`,
+    directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(RAW_ADDRESS)}`,
   },
 } as const;
 
 export type WeekDayKey = (typeof SITE.hours)[number]['dayKey'];
+
+/** "8:30–13:00, 17:00–20:00" a partir de las franjas de un día. */
+export function formatRanges(ranges: readonly (readonly [string, string])[]): string {
+  return ranges.map(([open, close]) => `${open}–${close}`).join(', ');
+}

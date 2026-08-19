@@ -127,15 +127,12 @@ export const ui = {
     'contact.info.email': 'Correu electrònic',
     'contact.info.instagram': 'Instagram',
     'contact.hours.title': 'Horaris',
-    'contact.hours.consultar': 'Consultar',
     'contact.cta': 'Com arribar-hi',
-    'contact.map.text': "Mapa — s'activarà amb Google Maps en confirmar la ubicació",
-    'contact.placeholderAddress': 'Adreça per confirmar',
-    'contact.placeholderPhone': 'Telèfon per confirmar',
-
-    'hours.weekdays': 'Dilluns – Divendres',
+    'hours.monday': 'Dilluns',
+    'hours.tuesdayFriday': 'Dimarts – Divendres',
     'hours.saturday': 'Dissabte',
     'hours.sunday': 'Diumenge',
+    'hours.closed': 'Tancat',
 
     'footer.tagline':
       'Un espai on la pastisseria i les flors es troben. Vine a gaudir, descobrir i quedar-te una mica més.',
@@ -287,15 +284,12 @@ export const ui = {
     'contact.info.email': 'Email',
     'contact.info.instagram': 'Instagram',
     'contact.hours.title': 'Horarios',
-    'contact.hours.consultar': 'Consultar',
     'contact.cta': 'Cómo llegar',
-    'contact.map.text': 'Mapa — se activará con Google Maps al confirmar la ubicación',
-    'contact.placeholderAddress': 'Dirección por confirmar',
-    'contact.placeholderPhone': 'Teléfono por confirmar',
-
-    'hours.weekdays': 'Lunes – Viernes',
+    'hours.monday': 'Lunes',
+    'hours.tuesdayFriday': 'Martes – Viernes',
     'hours.saturday': 'Sábado',
     'hours.sunday': 'Domingo',
+    'hours.closed': 'Cerrado',
 
     'footer.tagline':
       'Un espacio donde la pastelería y las flores se encuentran. Ven a disfrutar, descubrir y quedarte un poco más.',

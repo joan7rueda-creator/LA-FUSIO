@@ -24,13 +24,44 @@ function alternateHref(altLang: Lang): string {
   return withBase(`${altLang}${path}`);
 }
 
+// Cada dayKey de SITE.hours puede representar más de un día de la semana
+// (p.ej. "tuesdayFriday"), así que se expande a la lista de días schema.org que cubre.
+const dayKeyToSchemaDays: Record<string, string[]> = {
+  monday: ['Monday'],
+  tuesdayFriday: ['Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+  saturday: ['Saturday'],
+  sunday: ['Sunday'],
+};
+
+const openingHoursSpecification = SITE.hours.flatMap(({ dayKey, ranges }) =>
+  dayKeyToSchemaDays[dayKey].flatMap((day) =>
+    ranges.map(([opens, closes]) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: `https://schema.org/${day}`,
+      opens,
+      closes,
+    }))
+  )
+);
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': ['Bakery', 'FlowerShop'],
   name: SITE.name,
   description,
   url: Astro.site?.toString(),
+  telephone: SITE.contact.phone,
+  email: SITE.contact.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    postalCode: SITE.address.postalCode,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.region,
+    addressCountry: SITE.address.country,
+  },
   sameAs: [SITE.social.instagram],
+  openingHoursSpecification,
 };
 ---
 
